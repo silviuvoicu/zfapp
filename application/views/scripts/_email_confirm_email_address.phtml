@@ -1,0 +1,21 @@
+<?php 
+
+$email = <<< email
+Dear {$user->getUserByUserName($form->getValue('username'))->username},
+
+Your Album Cd Application account has been created! To complete registration, click on the below link to 
+confirm your e-mail address.
+
+http://{$_SERVER['SERVER_NAME']}/auth/confirm/key/{$user->getUserByUserName($form->getValue('username'))->code}
+
+Once confirmed, you'll be able to access exclusive Album Cd Application features!
+
+Thank you!
+The Album Cd Application Team
+
+Questions? Contact us at scvroin@yahoo.com or svoicuabg@gmail.com
+http://{$_SERVER['SERVER_NAME']}
+
+email;
+
+?>

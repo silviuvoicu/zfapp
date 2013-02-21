@@ -1,0 +1,10 @@
+<?php
+$this->jQuery()->enable()->addJavascriptFile($this->baseUrl() . '/js/frontend.js');
+$this->title = "Add new comment";
+$this->headTitle($this->title);
+?>
+<b>Add Comment for <?php echo $this->albumtitle;?> </b>
+<?php
+
+echo $this->form->setAction($this->url());
+?>

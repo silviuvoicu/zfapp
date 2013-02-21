@@ -1,0 +1,15 @@
+<?php
+$this->title = "Delete commnet";
+$this->headTitle($this->title);
+?>
+<p>Are you sure that you want to delete the comment for the
+'<?php echo $this->escape($this->album['titel']); ?>'?
+</p>
+<form action="<?php echo $this->url(array('action'=>'delete')); ?>" method="post">
+<div>
+<input type="hidden" name="id" value="<?php echo $this->id; ?>" />
+<input type="hidden" name="cd_id" value="<?php echo $this->cd_id; ?>" />
+<input type="submit" name="del" value="Yes" />
+<input type="submit" name="del" value="No" />
+</div>
+</form>

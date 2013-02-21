@@ -1,0 +1,17 @@
+<form id="login" action="<?php echo $this->element->getAction(); ?>" method="<?php echo $this->element->getMethod(); ?>" enctype="application/x-www-form-urlencoded" name="<?php echo $this->element->getName();?>">
+<p>
+<b>Username :</b><br />
+<?php echo $this->element->username; ?>
+</p>
+<p>
+<b>Password :</b><br />
+<?php echo $this->element->password; ?>
+</p>
+<!--p>
+ <b>Are you a human? :</b><br-->   
+<?php //echo $this->element->recaptcha; ?>
+<!--/p-->
+<p>
+<?php echo $this->element->login; ?>
+</p>
+</form>

@@ -1,0 +1,21 @@
+<form id="profile" action="<?= $this->element->getAction(); ?>" method="<?= $this->element->getMethod(); ?>">
+
+<p>
+<b>Your Name</b>:<br />
+<?= $this->element->username; ?><br />
+<span class="tiny">No spaces or special characters</span>
+</p>
+
+
+
+<p>
+<b>E-mail Address</b>:<br />
+<?= $this->element->email; ?><br />
+<span class="tiny">Must be valid for password recovery</span>
+</p>
+
+<p>
+<?= $this->element->profile ?>
+</p>
+
+</form>

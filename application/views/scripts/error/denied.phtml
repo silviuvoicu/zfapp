@@ -1,0 +1,16 @@
+<?php
+$this->title = "Access denied";
+$this->headTitle($this->title);
+?>
+<div class="page error" id="denied">
+	<h1 class="title"><?php echo $this->escape('Access denied') ?></h1>
+
+	<div class="content">
+		<div class="message error">
+            <?php echo $this->escape('You don\'t have enough permissions to achieve this action.') ?>
+                    <div id="logged-in-as">
+<?php echo $this->loggedInAs(); ?> </div>
+             <!--p><a href="<?php //echo $this->url(array('controller'=>'auth','action'=>'login'), null,true);?>">Log in</a></p-->       
+        </div>
+	</div>
+</div>

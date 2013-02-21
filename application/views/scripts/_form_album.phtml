@@ -1,0 +1,18 @@
+<form id="album" action="<?php echo $this->element->getAction(); ?>" method="<?php echo $this->element->getMethod(); ?>" enctype="application/x-www-form-urlencoded" name="<?php echo $this->element->getName();?>">
+<?php echo $this->element->id; ?>
+<p>
+<b>Artist :</b><br />
+<?php echo $this->element->interpret; ?>
+</p>
+<p>
+<b>Title :</b><br />
+<?php echo $this->element->titel; ?>
+</p>
+<p>
+<b>Year :</b><br />
+<?php echo $this->element->jahr; ?>
+</p>
+<p>
+<?php echo $this->element->submit; ?>
+</p>
+</form>

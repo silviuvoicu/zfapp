@@ -1,0 +1,95 @@
+<?php if ($this->totalItemCount>$this->itemCountPerPage): ?>
+ <div class="paginatorCDSComents">
+<?php 
+
+if(isset($this->previous)) :
+	//echo ' <a href="'.$this->url(array('page' => $this->first)).'">Beginning</a> ';
+       echo $this->ajaxLink('Beginning',
+					$this->url(array('secondpage' => $this->first,'idCd'=> $this->idCd)),
+					array('id' => 'beginningsecond'.$this->first.$this->idCd,
+                                            
+                                                 // 'update'  => "#Beginning" ,
+                                                  'noscript'=> true,
+                                                 // 'befeoreSend' => "updatePageLinks($this->first)",
+						  'complete' => 'displayBooks(data);',
+						  'method' => 'post'),
+					array('format' =>'json'));
+  echo $this->ajaxLink('&lt; Previous',
+					$this->url(array('secondpage' => $this->previous,'idCd'=> $this->idCd)),
+					array('id' => 'previoussecond'.$this->previous.$this->idCd,
+                                            
+                                                 // 'update'  => "#Beginning" ,
+                                                  'noscript'=> true,
+                                                 // 'befeoreSend' => "updatePageLinks($this->first)",
+						  'complete' => 'displayBooks(data);',
+						  'method' => 'post'),
+					array('format' =>'json'));
+
+?>
+     
+<?php else: ?> 
+     <span id ="beginningsecond<?php echo $this->first.$this->idCd ; ?>">  <b>Beginning</b>  </span> 
+     <!--span id="Previous"> </span-->
+<?php endif; ?>
+
+
+
+
+<?php 
+
+foreach($this->pagesInRange as $page) :
+    if ($this->current != $page):
+       // echo $this->url(array('page'=>''));
+	echo   $this->ajaxLink($page ,$this->url(array('secondpage' =>$page,'idCd'=> $this->idCd)),array('id'=>'pagesecond'.$page.$this->idCd, 
+                                                              'noscript'=> true,
+
+            'complete' => 'displayBooks(data);',
+						  'method' => 'post'),
+					array('format' =>'json')); 
+    echo  ' | ';
+    ?>
+    
+ <?php  else: ?>
+       
+    
+     <span id="pagesecond<?php echo $page.$this->idCd ; ?>"><b><?php echo $page;  echo  ' | '; ?></b></span>
+     <?php endif; ?>
+    
+<?php endforeach;?>
+<?php 
+
+if(isset($this->next)) :
+	//echo ' <a href="'.$this->url(array('page' => $this->first)).'">Beginning</a> ';
+       echo $this->ajaxLink('Next &gt; ',
+					$this->url(array('secondpage' => $this->next,'idCd'=> $this->idCd)),
+					array('id' => 'nextsecond'.$this->next.$this->idCd,
+                                            
+                                                 // 'update'  => "#Beginning" ,
+                                                  'noscript'=> true,
+                                                 // 'befeoreSend' => "updatePageLinks($this->first)",
+						  'complete' => 'displayBooks(data);',
+						  'method' => 'post'),
+					array('format' =>'json'));
+ echo '';
+  echo $this->ajaxLink('End',
+					$this->url(array('secondpage' => $this->last,'idCd'=> $this->idCd)),
+					array('id' => 'endsecond'.$this->last.$this->idCd,
+                                            
+                                                 // 'update'  => "#Beginning" ,
+                                                  'noscript'=> true,
+                                                 // 'befeoreSend' => "updatePageLinks($this->first)",
+						  'complete' => 'displayBooks(data);',
+						  'method' => 'post'),
+					array('format' =>'json'));
+
+?>
+
+<?php else: ?>
+     <span id="endsecond<?php echo $this->last.$this->idCd; ?>">End</span>
+     <?php endif; ?>
+ </div>
+<div>
+    Showing <div id="currentPage2<?php echo $this->idCd; ?>" style="display: inline;"><?php echo $this->current; ?></div> out of <?php echo $this->pageCount;  ?>
+</div>
+ <?php endif; ?>
+ 

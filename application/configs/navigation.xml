@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <nav>
+        <logout>
+            <label>Logout</label>
+            <controller>auth</controller>
+            <action>logout</action>
+            <resource>auth</resource>
+            <privilege>logout</privilege>
+			
+        </logout>
+		
+        <login>
+            <label>Login</label>
+            <controller>auth</controller>
+            <action>login</action>
+            <resource>auth</resource>
+            <privilege>login</privilege>
+        </login>
+        <register>
+            <label>Register</label>
+            <controller>auth</controller>
+            <action>register</action>
+            <resource>auth</resource>
+            <privilege>register</privilege>
+        </register>
+        <changepassword>
+            <label>Change Password</label>
+            <controller>auth</controller>
+            <action>password</action>
+            <resource>auth</resource>
+            <privilege>password</privilege>
+        </changepassword>
+        <editprofile>
+            <label>Edit Account</label>
+            <controller>auth</controller>
+            <action>profile</action>
+            <resource>auth</resource>
+            <privilege>profile</privilege>
+        </editprofile>
+        <deleteprofile>
+            <label>Delete Account</label>
+            <controller>auth</controller>
+            <action>delete</action>
+            <resource>auth</resource>
+            <privilege>delete</privilege>
+        </deleteprofile>
+        <list>
+            <label> Cd List</label>
+            <controller>index</controller>
+            <action>list</action>
+            <resource>index</resource>
+            <privilege>list</privilege>
+                                        
+        </list>
+			
+		<!--cds>
+			<label>Cds</label>
+			<uri>#</uri>
+			<resource>index</resource>
+			<pages>
+                                
+				<add>
+					<label>Add</label>
+					<controller>index</controller>
+					<action>add</action>
+                                </add>        
+                                       
+				<edit>
+					<label>Edit</label>
+					<controller>index</controller>
+					<action>edit</action>
+                                        
+				</edit>
+				<delete>
+					<label>Delete</label>
+					<controller>index</controller>
+					<action>delete</action>
+                                        
+				</delete>
+			</pages>
+		</cds-->
+		
+    </nav>	
+</config>

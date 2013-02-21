@@ -1,0 +1,12 @@
+<?php 
+$this->jQuery()->enable()->addJavascriptFile($this->baseUrl() . '/js/frontend.js');
+$this->headTitle('Login'); ?>
+<h1>Login</h1>
+<?php foreach($this->messages as $message){
+    echo $message;
+}; ?>
+<?php echo $this->errorMessage; ?>
+<?php echo $this->notActivated; ?>
+<?php  echo $this->form; ?>
+<?php echo 'If you lost your password, then click  <a href ="'.  $this->url(array('controller'=>'auth','action'=>'lost')) .'" >here </a> to retrive it' ;
+?>

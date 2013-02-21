@@ -1,0 +1,51 @@
+<?php
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+$this->headTitle()->setSeparator(' - ');
+$this->headTitle('CD Collection');
+echo $this->doctype(); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<?php echo $this->headMeta(); ?>
+<?php echo $this->headTitle(); ?>
+<?php  echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/style.css'); 
+   //  var_dump($this->jQuery()->isEnabled());     
+    //  die;
+if($this->jQuery()->isEnabled()){
+		$this->jQuery()->setLocalPath($this->baseUrl().'/js/jquery/js/jquery-1.6.2.min.js')
+		               ->setUiLocalPath($this->baseUrl().'/js/jquery/js/jquery-ui-1.8.15.custom.min.js')
+		               ->addStylesheet($this->baseUrl().'/js/jquery/css/redmond/jquery-ui-1.8.15.custom.css');
+		echo $this->jQuery();
+	}
+
+?>    
+</head>
+<body>
+
+  
+<div id="outer">
+<div id="header" align="center"><?php echo $this->title; ?>
+<div id="logged-in-as">
+<?php echo $this->loggedInAs(); ?> </div>
+</div>
+<div id="bar"></div>
+<div id="bodyblock" align="right">
+<div id="column" align="left">
+<h4 align="center">Menu</h4>
+<?php echo $this->navigation(); ?>
+</div>
+<div id="content">
+<h3 align="center">Content space</h3>
+<?php echo $this->layout()->content; ?>
+</div>
+</div>
+<div id="footer" align="center">
+     <!--iframe src="http://www.facebook.com/plugins/like.php?href=http://www.cdcollection.localhost/"
+        scrolling="no" frameborder="0"
+        style="border:none; width:450px; height:80px"></iframe-->
+</div>
+</div>
+    
+    
+    
+</body>
+</html>

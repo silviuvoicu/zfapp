@@ -1,0 +1,62 @@
+<?php
+$this->jQuery()->enable()->addJavascriptFile($this->baseUrl() . '/js/frontend.js');
+        //->addJavascriptFile($this->baseUrl() . '/js/jquery.regex.js');
+$this->title = "My Albums";
+$this->headTitle($this->title);
+ foreach($this->messages as $message){
+    echo $message;
+}
+$userRole = new Application_Model_UserRole();
+if (Zend_Registry::get('acl')->isAllowed($userRole, 'index', 'add')){
+    ?>
+    <p><a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'add'), null, TRUE); ?>" >Add new album</a></p>
+<?php }
+
+?>
+<div id="cdsResponse"><?php
+
+ $session = new Zend_Session_Namespace('Application');
+  $index = '';
+//  var_dump($this->cds);
+//  die;
+foreach ($this->cds as $k => $album) {
+   
+   
+    if (($this->cds[$k]->getId()== $session->idCdUrl) || ($this->cds[$k]->getId()== $session->editId) ||($this->cds[$k]->getId()== $session->deleteId)||($this->cds[$k]->getId()== $session->newComment )
+            || ($this->cds[$k]->getId()== $session->editComment)|| ($this->cds[$k]->getId()== $session->deleteComment)){
+        $index = $k;
+    }
+    $accordionContent = <<<AC
+perform by {$album->getInterpret()}<br />
+in the year {$album->getJahr()}<br />
+{$this->editLink[$k]} &nbsp; {$this->deleteLink[$k]}<br />
+{$this->details[$k]} <br/>
+{$this->paginator2[$k]} <br />
+AC;
+    echo $this->accordionPane('cds',$accordionContent,array('title' => $album->getTitel()));
+    
+        }
+  //  $index = ;
+       if (!is_int($index)){
+ echo $this->accordionContainer('cds',array('active' => 'none', 'collapsible' => 'true'));
+       }else{
+           echo $this->accordionContainer('cds',array('active' => $index));
+           unset($session->currentPage);
+           unset($session->currentSecondPage);
+           unset($session->idCdUrl);
+           unset($session->editId);
+           unset($session->deleteId);
+           unset($session->newComment);
+            unset($session->editComment);
+        unset($session->deleteComment);
+           $index= '';
+       }
+  
+?>
+
+</div>
+<p><?php echo $this->paginationControl($this->paginator, 'Sliding', 'pagination.phtml'); ?></p> 
+
+
+
+

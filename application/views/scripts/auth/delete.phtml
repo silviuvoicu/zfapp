@@ -1,0 +1,15 @@
+<?php
+$this->title = "Delete your account";
+$this->headTitle($this->title);
+?>
+<p>Are you sure that you want to delete your account at Album Cd ?</p>
+<form action="<?php echo $this->url(array('action'=>'delete')); ?>" method="post">
+<div>
+
+<input type="submit" name="del" value="Yes" />
+<input type="submit" name="del" value="No" />
+</div>
+</form>
+</br>
+</br>
+</br>

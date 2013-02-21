@@ -1,0 +1,11 @@
+<form id="commentForm" action="<?php echo $this->element->getAction(); ?>" method="<?php echo $this->element->getMethod(); ?>" enctype="application/x-www-form-urlencoded" name="<?php echo $this->element->getName();?>">
+<?php echo $this->element->comment_id; ?>
+<?php echo $this->element->cd_id ;?>    
+<p>
+<b>Comment :</b><br />
+<?php echo $this->element->comment; ?>
+</p>
+<p>
+<?php echo $this->element->submit; ?>
+</p>
+</form>

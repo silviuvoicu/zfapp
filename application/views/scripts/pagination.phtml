@@ -1,0 +1,133 @@
+<?php //if ($this->pageCount): ?>
+<?php
+/*
+if(isset($this->previous)) {
+	echo ' <a href="'.$this->url(array('page' => $this->first)).'">Beginning</a> ';
+} else {
+	echo 'Beginning ';
+}
+
+if(isset($this->previous)) {
+	echo ' <a href="'.$this->url(array('page' => $this->previous)).'">&lt; Previous</a> ';
+}
+ foreach($this->pagesInRange as $page) {
+	if($this->current != $page){
+		echo '<a href="'.$this->url(array('page' => $page)).'">'.$page.'</a>  | ';
+	} else {
+		echo $page.' | ';
+	}
+}
+
+if(isset($this->next)) {
+	echo ' <a href="'.$this->url(array('page' => $this->next)).'">Next &gt;</a> ';
+}
+
+if(isset($this->next)) {
+	echo ' <a href="'.$this->url(array('page' => $this->last)).'">End</a>';
+} else {
+	echo 'End';
+}
+ * 
+ * Showing out of
+ * */
+?>
+
+ <?php // echo $this->current; ?>  <?php //echo $this->pageCount; ?>
+<?php //endif;?>
+ <!--div id="Beginning"></div-->
+ <?php if ($this->totalItemCount>$this->itemCountPerPage): ?>
+ <div class ="paginatorCDS">
+<?php 
+
+if(isset($this->previous)) :
+	//echo ' <a href="'.$this->url(array('page' => $this->first)).'">Beginning</a> ';
+       echo $this->ajaxLink('Beginning ',
+					$this->url(array('page' => $this->first), null, TRUE),
+					array('id' => 'beginning',
+                                            
+                                                 // 'update'  => "#Beginning" ,
+                                                  'noscript'=> true,
+                                                 // 'befeoreSend' => "updatePageLinks($this->first)",
+						  'complete' => 'displayBooks(data);',
+						  'method' => 'post'),
+					array('format' =>'json'));
+
+echo ' <span id="beforepreviousline"> | </span> <a id="previous" href="'.$this->url(array('page' => $this->previous)).'">&lt; Previous  </a>  <span id="afterpreviousline"> | </span>';
+//  echo $this->ajaxLink(' | &lt; Previous |',
+//					$this->url(array('page' => $this->previous), null, TRUE),
+//					array('id' => 'previous',
+//                                            
+//                                                 // 'update'  => "#Beginning" ,
+//                                                  'noscript'=> true,
+//                                                 // 'befeoreSend' => "updatePageLinks($this->first)",
+//						  'complete' => 'displayBooks(data);',
+//						  'method' => 'post'),
+//					array('format' =>'json'));
+
+?>
+     
+
+<?php endif; ?>
+
+
+
+
+<?php 
+
+foreach($this->pagesInRange as $page) :
+    if ($this->current != $page):
+       // echo $this->url(array('page'=>''));
+	echo   $this->ajaxLink($page ,$this->url(array('page' =>$page), null, TRUE),array('id'=>'page'.$page, 
+                                                              'noscript'=> true,
+
+            'complete' => 'displayBooks(data);',
+						  'method' => 'post'),
+					array('format' =>'json')); 
+    echo  "<span id='notcurrentlinepage$page'> | </span> ";
+    ?>
+    
+ <?php  else: ?>
+       
+    
+     <span id="page<?php echo $page; ?>"><b><?php echo $page;   ?></b></span>
+    <?php if ($page != $this->last) :?>
+     <span id="currentlinepage<?php echo $page; ?>"> | </span>
+     <?php endif;?>
+     <?php endif; ?>
+    
+<?php endforeach;?>
+<?php 
+
+if(isset($this->next)) :
+	echo ' <a id="next" href="'.$this->url(array('page' => $this->next)).'">Next &gt; </a>  <span id="nextafterline"> | </span>';
+//       echo $this->ajaxLink('Next &gt; ',
+//					$this->url(array('page' => $this->next), null, TRUE),
+//					array('id' => 'next',
+//                                            
+//                                                 // 'update'  => "#Beginning" ,
+//                                                  'noscript'=> true,
+//                                                 // 'befeoreSend' => "updatePageLinks($this->first)",
+//						  'complete' => 'displayBooks(data);',
+//						  'method' => 'post'),
+//					array('format' =>'json'));
+ echo '';
+  echo $this->ajaxLink('  End',
+					$this->url(array('page' => $this->last), null, TRUE),
+					array('id' => 'end',
+                                            
+                                                 // 'update'  => "#Beginning" ,
+                                                  'noscript'=> true,
+                                                 // 'befeoreSend' => "updatePageLinks($this->first)",
+						  'complete' => 'displayBooks(data);',
+						  'method' => 'post'),
+					array('format' =>'json'));
+
+?>
+<?php endif; ?>
+
+     
+ </div>
+<div>
+    Showing <div id="currentPage" style="display: inline;"><?php echo $this->current; ?></div> out of <?php echo $this->pageCount;  ?>
+</div>
+ <?php endif; ?>
